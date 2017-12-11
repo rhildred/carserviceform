@@ -36,9 +36,11 @@ add_action('init', 'appt_shortcodes_init');
 include_once "backend.php";
 
 register_activation_hook( __FILE__, function(){
+    //ob_start(); //use this to debug
     global $wpdb, $table_prefix;
     $wpdb->show_errors();
     $sSQL = "CREATE TABLE " . 
     $table_prefix . "test ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'test1' TEXT, 'test2' TEXT)";
     $wpdb->query($sSQL);
+    //trigger_error(ob_get_contents(),E_USER_ERROR); // this goes with ob_start
 } );
