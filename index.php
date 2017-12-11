@@ -2,17 +2,14 @@
 /*
 Plugin Name: Appointment UI
 */
-function appt_shortcodes_init()
-{
-    function appt_shortcode($atts = [], $content = null)
-    {
+add_action('init', function() {
+    add_shortcode('appt-plugin',function($atts = [], $content = null){
         $content .= "<script>var atts = " .
         json_encode($atts) .
         "</script>";
         $content .= file_get_contents(dirname(__FILE__) . "/index.html");
         return $content;
-    }
-    add_shortcode('appt-plugin', 'appt_shortcode');
+    });
 
     wp_register_style('main_stylesheet', 
     plugins_url('main.css', __FILE__));
@@ -30,8 +27,7 @@ function appt_shortcodes_init()
 
     wp_enqueue_script('mycontroller_script');
    
-}
-add_action('init', 'appt_shortcodes_init');
+});
 
 include_once "backend.php";
 
