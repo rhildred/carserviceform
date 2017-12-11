@@ -1,6 +1,11 @@
-<p>This is a user interface for a simple selection control structure. You input your mark in the form below, and it tells you if you passed or failed.</p>
 <form ng-app="myApp" ng-controller="myCtrl">
-<label>Input test score</label><input ng-model="score" />
-<button class="hairdresser-blue" ng-click="calculate()">Get Status</button>
-<p>{{service}} {{message}}</p>
+<label>Appointment Date:&nbsp;<input ng-model="model.apptdate" type="date" /></label>
+<br />
+<div ng-repeat="service in model.services">{{service.name}}
+
+</div>
+<label>Additional Services:&nbsp;<input ng-model="addservice" /></label>
+<button class="hairdresser-blue" ng-click="addService()">+</button>
+<p>{{model.service}} {{message}}</p>
+<button ng-click="submitForm()">Submit</button>
 </form>

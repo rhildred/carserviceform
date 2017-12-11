@@ -34,3 +34,11 @@ function appt_shortcodes_init()
 add_action('init', 'appt_shortcodes_init');
 
 include_once "backend.php";
+
+register_activation_hook( __FILE__, function(){
+    global $wpdb, $table_prefix;
+    $wpdb->show_errors();
+    $sSQL = "CREATE TABLE " . 
+    $table_prefix . "test ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'test1' TEXT, 'test2' TEXT)";
+    $wpdb->query($sSQL);
+} );

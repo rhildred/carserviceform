@@ -1,10 +1,11 @@
 angular.module("myApp", []).controller("myCtrl", function ($scope) {
-    $scope.service = atts.service;
-    $scope.calculate = function(){
-      if($scope.score >= 55){
-        $scope.message = "you passed!"
-      }else{
-        $scope.message = "you failed";
-      }
+  $scope.model = {};  
+  $scope.model.service = atts.service;
+  $scope.model.services = [];
+    $scope.addService = function(){
+      $scope.model.services.push({"name":$scope.addservice});
+    }
+    $scope.submitForm = function(){
+      alert(JSON.stringify($scope.model));
     }
   });
