@@ -38,5 +38,8 @@ register_activation_hook( __FILE__, function(){
     $sSQL = "CREATE TABLE " . 
     $table_prefix . "test ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'test1' TEXT, 'test2' TEXT)";
     $wpdb->query($sSQL);
+    $sSQLAppt = "CREATE TABLE " . 
+    $table_prefix . "appointment ('id' INTEGER PRIMARY KEY AUTOINCREMENT, 'service' TEXT, 'apptdate' TEXT)";
+    $wpdb->query($sSQLAppt);
     //trigger_error(ob_get_contents(),E_USER_ERROR); // this goes with ob_start
 } );

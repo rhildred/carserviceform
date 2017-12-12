@@ -28,6 +28,18 @@ add_action('init', function () {
                     $wpdb->prepare("SELECT * FROM " . 
                     $table_prefix . "test", null) ));
         });
+        $slim->post('/slim/api/appointment', function(){
+            global $wpdb, $table_prefix;
+            $postdata = file_get_contents("php://input");
+            $oAppointment = json_decode($postdata);
+            $ssQL = "INSERT INTO " . $table_prefix . 
+            "appointment(service, apptdate) VALUES(%s, %s)";
+            $stmt = $wpdb->prepare($ssQL, 
+                array($oAppointment->service, $oAppointment->apptdate));
+            $wpdb->query($stmt);
+            $oAppointment->id = $wpdb->insert_id;
+            echo json_encode($oAppointment);
+        });
         $slim->run();
         exit;
     }
