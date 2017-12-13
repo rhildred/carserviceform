@@ -38,6 +38,12 @@ add_action('init', function () {
                 array($oAppointment->service, $oAppointment->apptdate));
             $wpdb->query($stmt);
             $oAppointment->id = $wpdb->insert_id;
+            $sServiceSQL = "INSERT INTO " . $table_prefix . 
+            "service(name, apptid) VALUES(%s, %s)";
+            foreach($oAppointment->services as $service){
+                $stmt = $wpdb->prepare($sServiceSQL, array($service->name, $oAppointment->id ));
+                $wpdb->query($stmt);
+            }
             echo json_encode($oAppointment);
         });
         $slim->run();
