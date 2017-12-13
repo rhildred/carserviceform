@@ -1,10 +1,10 @@
-<form ng-app="myApp" ng-controller="myCtrl">
-<label>Appointment Date:&nbsp;<input ng-model="model.apptdate" type="date" /></label>
+<form ng-app="myApp" ng-controller="myCtrl" ng-submit="submitForm()">
+<label>Appointment Date:&nbsp;<input required="required" ng-model="model.apptdate" type="date" /></label>
 <br />
 <div ng-repeat="service in model.services">{{service.name}}
 
 </div>
 <label>Additional Services:&nbsp;<input ng-model="addservice" /></label>
-<button class="hairdresser-blue" ng-click="addService()">+</button>
-<button ng-click="submitForm()">Submit</button>
+<button type="button" class="hairdresser-blue" ng-click="addService()">+</button>
+<button type="submit">Submit</button>
 </form>
