@@ -1,10 +1,28 @@
 <form ng-app="myApp" ng-controller="myCtrl" ng-submit="submitForm()">
-<label>Appointment Date:&nbsp;<input required="required" ng-model="model.apptdate" type="date" /></label>
-<br />
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input class="form-control" id="email" required="required" ng-model="model.email" type="email" />
+    </div>
+    <div class="form-group">
+        <label for="apptdate">Appointment Date:</label>
+        <input class="form-control" id="apptdate" required="required" ng-model="model.apptdate" type="date" />
+    </div>
 <div ng-repeat="service in model.services">{{service.name}}
 
 </div>
-<label>Additional Services:&nbsp;<input ng-model="addservice" /></label>
-<button type="button" class="hairdresser-blue" ng-click="addService()">+</button>
+<div class="form-group">    
+    <label for="addservice">Additional Services:</label>
+    <div class="row">
+        <div class="col-sm-10">
+            <input class="form-control" id="addservice" ng-model="addservice" />
+        </div>
+        <div class="col-sm-2">
+            <button class="pull-right hairdresser-blue" type="button" ng-click="addService()">+</button>
+              
+        </div>
+        
+    </div>
+</div>
+<div class="warn">{{servicemessage}}</div>
 <button type="submit">Submit</button>
 </form>

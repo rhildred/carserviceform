@@ -3,7 +3,12 @@ angular.module("myApp", []).controller("myCtrl", function ($scope, $http) {
   $scope.model.service = atts.service;
   $scope.model.services = [];
     $scope.addService = function(){
-      $scope.model.services.push({"name":$scope.addservice});
+      if($scope.addservice && $scope.addservice != ""){
+        $scope.model.services.push({"name":$scope.addservice});
+        $scope.servicemessage="";        
+      }else{
+        $scope.servicemessage="please enter an extra service before clicking";
+      }
       $scope.addservice = "";
     }
     $scope.submitForm = function(){

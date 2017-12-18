@@ -1,3 +1,9 @@
 .hairdresser-blue{
     background: #242e73;
 }
+
+.warn{
+    color:red;
+    font-size:80%;
+    padding-bottom: 1em;
+}
