@@ -10,7 +10,8 @@ add_action('init', function() {
         $content .= file_get_contents(dirname(__FILE__) . "/index.html");
         return $content;
     });
-
+    wp_register_style('bootstrap', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
+    wp_enqueue_style('bootstrap');
     wp_register_style('main_stylesheet', 
     plugins_url('main.css', __FILE__));
     wp_enqueue_style('main_stylesheet');
